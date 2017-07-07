@@ -1,0 +1,47 @@
+<section class="app-weather-search">
+  <form (ngSubmit)="onSubmit(searchForm)" #searchForm="ngForm">
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text"
+             class="form-control"
+             id="city"
+             (input)="onSearchLocation(input.value)"
+             required
+             [(ngModel)]="weatherItems.city"
+             name="city"
+             #input/>
+      <div>
+        <span class="info">City found: </span> {{data.name}}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text"
+             class="form-control"
+             id="description"/>
+    </div>
+    <hr/>
+
+
+    <div class="form-group">
+      <label for="power">Hero Power:</label>
+      <select class="form-control"
+              id="power"
+              required>
+        <!--[value]: ba pow de zhi bang dao value zhe ge shu xing shang-->
+          <option *ngFor="let pow of powers"
+                  [value]="pow">
+            {{pow}}
+          </option>
+      </select>
+    </div>
+
+    <button type="submit"
+            class="btn btn-success"
+            [disabled]="!searchForm.form.valid">Add City</button>
+  </form>
+
+</section>
+
+
